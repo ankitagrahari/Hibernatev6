@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false">
+  <class name="entity.MetadataField" table="dma_custom_field">
+    <id name="id">
+      <generator class="uuid"/>
+    </id>
+    <property name="CreatedDate" column="created_date"/>
+    <property name="ClassName" column="class_name"/>
+    <property name="Name" column="name"/>
+    <property name="FieldTypeNum" column="field_type_num"/>
+    <list name="Options" inverse="true" cascade="all-delete-orphan">
+      <key column="custom_field_id"/>
+      <index column="seq_num"/>
+      <one-to-many class="entity.MetadataOption"/>
+    </list>
+  </class>
+  <class name="entity.MetadataOption" table="dma_custom_field_option">
+    <id name="id">
+      <generator class="uuid"/>
+    </id>
+    <property name="CreatedDate" column="created_date"/>
+    <property name="SeqNum" column="seq_num"/>
+    <property name="Value" column="entity_value"/>
+    <many-to-one name="Field" not-null="true" column="custom_field_id"/>
+  </class>
+</hibernate-mapping>
