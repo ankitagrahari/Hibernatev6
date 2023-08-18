@@ -3,7 +3,7 @@
   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping default-lazy="false">
-  <class name="entity.MetadataField" table="custom_field">
+  <class name="entity.MetadataField" table="dma_custom_field">
     <id name="id">
       <generator class="uuid"/>
     </id>
@@ -17,7 +17,7 @@
       <one-to-many class="entity.MetadataOption"/>
     </list>
   </class>
-  <class name="entity.MetadataOption" table="custom_field_option">
+  <class name="entity.MetadataOption" table="dma_custom_field_option">
     <id name="id">
       <generator class="uuid"/>
     </id>

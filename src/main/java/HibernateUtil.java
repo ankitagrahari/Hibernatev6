@@ -3,6 +3,7 @@ import org.hibernate.*;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+import org.hibernate.query.SelectionQuery;
 import org.hibernate.service.ServiceRegistry;
 
 import java.io.FileInputStream;
@@ -70,7 +71,6 @@ public class HibernateUtil {
                 // Must use setParameter(String, Object) instead of setParameter(int, Object)
                 query.setParameter(i + 1, params[i]);
             }
-            
             List<Object[]> found = query.list();
             return found;
         } catch (JDBCException e) {
